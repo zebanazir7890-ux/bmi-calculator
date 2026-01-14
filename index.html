@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Year Project - BMI</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); width: 350px; text-align: center; }
+        h2 { color: #333; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        button { width: 100%; padding: 12px; background-color: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
+        button:hover { background-color: #0056b3; }
+        .res-box { margin-top: 25px; padding: 15px; border-radius: 10px; background-color: #f8f9fa; border: 1px solid #eee; }
+        .error { color: #e74c3c; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>BMI Calculator</h2>
+    <form method="POST">
+        <input type="number" step="any" name="weight" placeholder="Weight (kg)" required>
+        <input type="number" step="any" name="height" placeholder="Height (meters)" required>
+        <button type="submit">Calculate Now</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if bmi %}
+        <div class="res-box">
+            <p style="font-size: 1.1rem; margin: 5px 0;">Your BMI: <strong>{{ bmi }}</strong></p>
+            <p style="color: {{ color }}; font-weight: bold; font-size: 1.2rem;">{{ category }}</p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
